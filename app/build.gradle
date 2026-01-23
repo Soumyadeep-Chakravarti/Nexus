@@ -1,0 +1,21 @@
+plugins {
+    id 'application'
+}
+
+group = 'com.nexus'
+version = '0.1.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    mainClass = 'com.nexus.app.Main'
+}
+
+dependencies {
+    implementation project(':core')
+}
+
