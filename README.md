@@ -76,7 +76,7 @@ Nexus acts as a **central message router/hub** where:
 
 ## Relationship to COBALT
 
-Nexus is the first product extracted from the [COBALT architecture](../COBALT/README.md), specifically Layer 3 (The Nexus Layer). Once mature as a standalone product, it will be re-integrated as the official Layer 3 implementation within the full COBALT system.
+Nexus is the first product extracted from the [COBALT architecture](https://github.com/Soumyadeep-Chakravarti/Project-COBALT/), specifically Layer 3 (The Nexus Layer). Once mature as a standalone product, it will be re-integrated as the official Layer 3 implementation within the full COBALT system.
 
 ---
 
