@@ -1,6 +1,6 @@
 # Nexus
 
-**Enterprise-Grade Language-Universal Message Router**
+**A bounded in-process message router for polyglot systems.**
 
 ---
 
@@ -23,37 +23,48 @@ Nexus acts as a **central message router/hub** where:
 
 ---
 
-## Technical Foundation
+## Current Foundation
 
-- **Java 21 LTS** - Virtual threads, modern features, 8 years support
-- **Custom binary protocol** - JSON for development → FlatBuffers for production
-- **Production targets**: Sub-millisecond latency, 100k+ messages/second
-- **Zero single point of failure** - True peer network model
+- Java 21 with a thread-safe, in-process topic router
+- Immutable message envelopes with IDs and creation timestamps
+- Explicit bounded subscriber mailboxes and non-blocking backpressure reports
+- A small CLI demonstration and JUnit coverage of routing contracts
+
+Nexus does not yet provide a network protocol, RPC, a schema registry, or
+working language adapters. The existing C/JNI and Python examples are legacy
+prototypes and are not part of the active build surface.
 
 ---
 
 ## Project Status
 
-**Phase**: Design & Planning  
-**Started**: 2025-11-03  
-**Current Sprint**: Architecture design and tooling setup
+**Phase**: Foundation
+
+The first released boundary is the in-process routing API. Local IPC and
+language adapters will build on this contract rather than define their own
+queues or message semantics.
 
 ---
 
-## Documentation
+## Development
 
-- **[Design-Discussion.md](Design-Discussion.md)** - Design decisions, feature roadmap, and planning discussions
-- **[Technical-Spec.md](Technical-Spec.md)** - Detailed technical specification and architecture
-- **[Project-Structure.md](Project-Structure.md)** - Code structure, tooling choices, and naming conventions
+The Nix shell supplies JDK 21, Gradle, direnv, and repository tooling.
+
+```bash
+direnv allow
+./gradlew test
+./gradlew run
+```
 
 ---
 
 ## Key Features (Planned)
 
-### Phase 1 Priorities
-- ⭐ Nexus CLI - Command-line tools for testing and tracing
-- ⭐ Schema Registry - Centralized type definitions
-- ⭐ OpenTelemetry Integration - Built-in observability
+### Next Steps
+- Local IPC transport with explicit framing and lifecycle rules
+- Language adapters backed by the transport contract
+- Schema/version registry for message payloads
+- Observability and routing metrics
 
 ### Future Enhancements
 - Service mesh integration (Kubernetes/Istio)
@@ -80,12 +91,6 @@ Nexus is the first product extracted from the [COBALT architecture](https://gith
 
 ---
 
-## Quick Links
+## License
 
-- **Repository**: (TBD)
-- **Documentation Site**: (TBD)
-- **Issue Tracker**: (TBD)
-
----
-
-**Last Updated**: 2026-01-08
+Nexus is licensed under the [MIT License](LICENSE).
